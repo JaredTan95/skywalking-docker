@@ -14,6 +14,10 @@ ENV ES_CLUSTER_NAME=elasticsearch \
 
 ADD http://mirrors.tuna.tsinghua.edu.cn/apache/incubator/skywalking/5.0.0-beta2/apache-skywalking-apm-incubating-5.0.0-beta2.tar.gz /
 
+# ADD after unzip does not work?
+
+RUN tar -zxvf /apache-skywalking-apm-incubating-5.0.0-beta2.tar.gz
+
 COPY application.yml /apache-skywalking-apm-incubating/config/application.yml
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
