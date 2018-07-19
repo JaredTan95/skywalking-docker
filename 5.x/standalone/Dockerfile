@@ -12,7 +12,7 @@ ENV ES_CLUSTER_NAME=elasticsearch \
     UI_JETTY_BIND_PORT=12800 \
     UI_JETTY_BIND_HOST=0.0.0.0
 
-ADD http://www.apache.org/dyn/closer.cgi/incubator/skywalking/5.0.0-beta2/apache-skywalking-apm-incubating-5.0.0-beta2.tar.gz /
+ADD http://mirrors.tuna.tsinghua.edu.cn/apache/incubator/skywalking/5.0.0-beta2/apache-skywalking-apm-incubating-5.0.0-beta2.tar.gz /
 
 COPY application.yml /apache-skywalking-apm-incubating/config/application.yml
 
