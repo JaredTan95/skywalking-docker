@@ -7,6 +7,7 @@
 ### 直接拉取镜像运行
 - 镜像地址：[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/)
 - 运行：```docker run -p 8080:8080 -p 10800:10800 -p 11800:11800 -p 12800:12800 -e ES_CLUSTER_NAME=sky-es-docker -e ES_ADDRESSES=192.168.2.96:9300 -d wutang/skywalking-docker:latest```
+- 使用浏览器访问```http://localhost:8080```即可.
 
 ### 自己构建镜像
 - [安装Docker环境](https://www.docker.com/community-edition#/overview)
