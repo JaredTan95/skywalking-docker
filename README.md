@@ -18,3 +18,51 @@
 - ```docker run -p 8080:8080 -p 10800:10800 -p 11800:11800 -p 12800:12800 -e ES_CLUSTER_NAME=elasticsearch -e ES_ADDRESSES=192.168.2.96:9300 -d skywalking:5.0.0```
 - 使用浏览器访问```http://localhost:8080```即可.
 - 日志挂载 ```-v /your/log/path:/sky/logs```
+
+### Docker Compose Quick-Start
+```
+version: '2'
+services:
+  elasticsearch-service:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.10
+    container_name: elasticsearch
+    environment:
+      - cluster.name=elasticsearch
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+      - node.name=elasticsearch_node_1
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+  
+  skywalking:
+    image: wutang/skywalking-docker:5.x
+    container_name: skywalking
+    environment:
+      - ES_CLUSTER_NAME=elasticsearch
+      - ES_ADDRESSES=elasticsearch-service:9300
+      - BIND_HOST=skywalking
+      - AGENT_JETTY_BIND_HOST=skywalking
+      - NAMING_BIND_HOST=skywalking
+      - UI_JETTY_BIND_HOST=0.0.0.0
+    depends_on:
+      - elasticsearch-service
+    links:
+      - elasticsearch-service
+    ports:
+      - 8080:8080
+      - 10800:10800
+      - 11800:11800
+      - 12800:12800
+
+volumes:
+  esdata1:
+    driver: local
+```
