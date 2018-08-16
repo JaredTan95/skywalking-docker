@@ -47,7 +47,7 @@
 version: '2'
 services:
   elasticsearch-service:
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.10
+    image: wutang/elasticsearch-shanghai-zone:5.6.10
     container_name: elasticsearch
     environment:
       - cluster.name=elasticsearch
