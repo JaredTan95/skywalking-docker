@@ -21,6 +21,7 @@
 
 ### Docker Compose Quick-Start
 ```
+
 version: '2'
 services:
   elasticsearch-service:
@@ -36,8 +37,6 @@ services:
       memlock:
         soft: -1
         hard: -1
-    volumes:
-      - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
       - 9300:9300
@@ -62,7 +61,4 @@ services:
       - 11800:11800
       - 12800:12800
 
-volumes:
-  esdata1:
-    driver: local
 ```
