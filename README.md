@@ -37,10 +37,8 @@
 - ```docker build -t es-sh:5.6.10 .```
 
 ### Docker Compose Quick-Start
-其中引用了:
+其中引用了[wutang/elasticsearch-shanghai-zone ](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/)镜像和[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/) 镜像
 
-- [wutang/elasticsearch-shanghai-zone ](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/)镜像
-- [wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/) 镜像
 - ```cd /skywalking-docker/5.x/quick-start/```
 - ```docker-compose up docker-compose-v2.yml```
 
