@@ -72,7 +72,7 @@ ui:
 storage:
   elasticsearch:
     clusterName: {ES_CLUSTER_NAME}
-    clusterTransportSniffer: true
+    clusterTransportSniffer: false
     clusterNodes: {ES_ADDRESSES}
     indexShardsNumber: 2
     indexReplicasNumber: 0

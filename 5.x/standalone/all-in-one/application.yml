@@ -61,7 +61,7 @@ analysis_segment_parser:
     bufferFilePath: ../buffer/
     bufferOffsetMaxFileSize: 10M
     bufferSegmentMaxFileSize: 500M
-    bufferFileCleanWhenRestart: true
+    bufferFileCleanWhenRestart: false
 ui:
   jetty:
     # Stay in `0.0.0.0` if UI starts up in default mode.
