@@ -8,9 +8,10 @@
 ## 目录结构
 
 - 5.x Skywalking 单机快速部署镜像源文件：
-	- 用于自动构建[wutang/elasticsearch-shanghai-zone ](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/)Docker镜像。
-- elasticsearch-5.6.10-Zone-Asia-SH 同步上海时区的Elasticsearch镜像源文件：
 	- 用于自动构建[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/) Docker镜像。
+	zone/)Docker镜像。
+- elasticsearch-5.6.10-Zone-Asia-SH 同步上海时区的Elasticsearch镜像源文件：
+	- 用于自动构建[wutang/elasticsearch-shanghai-zone ](https://hub.docker.com/r/wutang/elasticsearch-shanghai-
 
 ## Usage
 ### 直接拉取镜像运行
