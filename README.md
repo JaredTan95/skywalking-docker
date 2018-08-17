@@ -9,17 +9,16 @@
 
 - 5.x Skywalking 单机快速部署镜像源文件：
 	- 用于自动构建[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/) Docker镜像。
-	zone/)Docker镜像。
 - elasticsearch-5.6.10-Zone-Asia-SH 同步上海时区的Elasticsearch镜像源文件：
-	- 用于自动构建[wutang/elasticsearch-shanghai-zone](https://hub.docker.com/r/wutang/elasticsearch-shanghai-
+	- 用于自动构建[wutang/elasticsearch-shanghai-zone](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/）Docker镜像。
 
 ## Usage
-### 直接拉取镜像运行
+### 方式一、直接拉取镜像运行
 - 镜像地址：[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/)
 - 运行：```docker run -p 8080:8080 -p 10800:10800 -p 11800:11800 -p 12800:12800 -e ES_CLUSTER_NAME=elasticsearch -e ES_ADDRESSES=192.168.2.96:9300 -d wutang/skywalking-docker:latest```
 - 使用浏览器访问```http://localhost:8080```即可.
 
-### 通过源码构建镜像
+### 方式二、通过源码构建镜像
 
 #### 构建Skyealking镜像
 - [安装Docker环境](https://www.docker.com/community-edition#/overview)
@@ -37,7 +36,7 @@
 - ```cd /skywalking-docker/5.x/standalone/elasticsearch-5.6.10-Zone-Asia-SH```
 - ```docker build -t es-sh:5.6.10 .```
 
-### Docker Compose Quick-Start
+### 方式三、Docker Compose Quick-Start
 其中引用了[wutang/elasticsearch-shanghai-zone ](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/)镜像和[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/) 镜像
 
 - ```cd /skywalking-docker/5.x/quick-start/```
