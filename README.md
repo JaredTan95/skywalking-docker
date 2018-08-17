@@ -1,7 +1,13 @@
 # Skywalking-Docker
 通过Apache-skywalking官方发布的[压缩包](https://skywalking.incubator.apache.org/)构建Docker镜像。提供一键启动单机演示版Skywalking的方式。
 
-[![GitHub stars](https://img.shields.io/github/stars/JaredTan95/skywalking-docker.svg?style=for-the-badge&label=Stars&logo=github)](https://github.com/JaredTan95/skywalking-docker)
+- [![GitHub stars](https://img.shields.io/github/stars/JaredTan95/skywalking-docker.svg?style=for-the-badge&label=Stars&logo=github)](https://github.com/JaredTan95/skywalking-docker)
+- ![Docker Build Status](https://img.shields.io/docker/build/wutang/skywalking-docker.svg)
+- ![Docker Pulls](https://img.shields.io/docker/pulls/wutang/skywalking-docker.svg):[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/)
+- ![Docker Pulls](https://img.shields.io/docker/pulls/wutang/skywalking-collector.svg):[wutang/skywalking-collector](https://hub.docker.com/r/wutang/skywalking-collector/)
+- ![Docker Automated build](https://img.shields.io/docker/automated/wutang/skywalking-docker.svg)
+- [![ImageLayers Size](https://img.shields.io/imagelayers/image-size/wutang/skywalking-docker/latest.svg)](https://hub.docker.com/r/wutang/skywalking-docker/)
+- [![ImageLayers Layers](https://img.shields.io/imagelayers/layers/wutang/skywalking-docker/latest.svg)](https://hub.docker.com/r/wutang/skywalking-docker/)
 
 [Apache-skywalking官方源码](https://github.com/apache/incubator-skywalking/)
 
