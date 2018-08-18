@@ -25,7 +25,7 @@ Docker 镜像名称:[wutang/skywalking-docker](https://hub.docker.com/r/wutang/s
 
 
 ## 与elasticsearch-shanghai-zone镜像配合使用请参考
-- [wutang/elasticsearch-shanghai-zone](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/)
+- [wutang/elasticsearch-shanghai-zone](../../../elasticsearch-5.6.10-Zone-Asia-SH/README.md)
 - [quick start](../5.x/quick-start/README.md)
 
 

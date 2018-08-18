@@ -24,7 +24,7 @@ Elasticsearch集群名称，运行Skywalking需要与此名称保持一致。
 是否开启xpack安全验证，在运行Skywalking中需要将其关闭。
 
 ## 与Skywalking-Docker镜像配合使用请参考
-- [wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/)
+- [wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/)镜像[使用说明](../5.x/standalone/all-in-one/README.md)
 - [quick start](../5.x/quick-start/README.md)
 
 
