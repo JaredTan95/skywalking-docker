@@ -47,5 +47,45 @@
 - ```cd /skywalking-docker/5.x/standalone/elasticsearch-5.6.10-Zone-Asia-SH```
 - ```docker build -t es-sh:5.6.10 .```
 
+### Docker Compose
+version: '2'
+services:
+  elasticsearch-service:
+    image: wutang/elasticsearch-shanghai-zone
+    container_name: elasticsearch
+    environment:
+      - cluster.name=elasticsearch
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+      - node.name=elasticsearch_node_1
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+      - 9300:9300
+  
+  skywalking:
+    image: wutang/skywalking-docker:5.x
+    container_name: skywalking
+    environment:
+      - ES_CLUSTER_NAME=elasticsearch
+      - ES_ADDRESSES=elasticsearch-service:9300
+      - BIND_HOST=skywalking
+      - AGENT_JETTY_BIND_HOST=skywalking
+      - NAMING_BIND_HOST=skywalking
+      - UI_JETTY_BIND_HOST=0.0.0.0
+    depends_on:
+      - elasticsearch-service
+    links:
+      - elasticsearch-service
+    ports:
+      - 8080:8080
+      - 10800:10800
+      - 11800:11800
+      - 12800:12800
+
 ### 联系作者
-<img src="http://oosk9q3p6.bkt.clouddn.com/wechatTJ.png"  width=300px,height=300px/>
+<img src="http://oosk9q3p6.bkt.clouddn.com/wechatTJ.png" style="width=200px;height=200px;" />
