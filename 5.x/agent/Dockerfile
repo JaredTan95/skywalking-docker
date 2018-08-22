@@ -12,4 +12,4 @@ LABEL maintainer="jian.tan@daocloud.io"
 COPY --from=sky-builder /apache-skywalking-apm-incubating/agent /apache-skywalking-apm-incubating/agent
 
 
-# logs locations in /sky/logs folder.
+# agent locations in /apache-skywalking-apm-incubating/agent folder.
