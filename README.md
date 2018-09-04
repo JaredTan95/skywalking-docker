@@ -88,6 +88,3 @@ services:
       - 11800:11800
       - 12800:12800
 ```
-
-### 联系作者
-<img src="http://oosk9q3p6.bkt.clouddn.com/wechatTJ.png" style="width=200px;height=200px;" />
