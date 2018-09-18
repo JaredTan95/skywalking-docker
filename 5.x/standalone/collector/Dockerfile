@@ -1,9 +1,11 @@
 FROM alpine:3.8 AS sky-builder
 
-# after ADD unzip does not work?
-ADD http://mirrors.tuna.tsinghua.edu.cn/apache/incubator/skywalking/5.0.0-beta2/apache-skywalking-apm-incubating-5.0.0-beta2.tar.gz /
+ENV SKYWALKING_VERSION=5.0.0-RC2
 
-RUN tar -zxvf /apache-skywalking-apm-incubating-5.0.0-beta2.tar.gz \
+# after ADD unzip does not work?
+ADD http://mirrors.tuna.tsinghua.edu.cn/apache/incubator/skywalking/${SKYWALKING_VERSION}/apache-skywalking-apm-incubating-${SKYWALKING_VERSION}.tar.gz  /
+
+RUN tar -zxvf /apache-skywalking-apm-incubating-${SKYWALKING_VERSION}.tar.gz \
     && cd /apache-skywalking-apm-incubating \
     && rm -rf ./agent \
     && rm -rf ./webapp
