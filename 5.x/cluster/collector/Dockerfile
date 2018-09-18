@@ -38,12 +38,12 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime \
     && echo 'Asia/Shanghai' >/etc/timezone \
     && chmod +x /docker-entrypoint.sh \
-    && chmod +x /apache-skywalking-apm-incubating/bin/startup.sh \
-    && echo "tail -f /dev/null" >> /apache-skywalking-apm-incubating/bin/startup.sh \
+    && chmod +x /apache-skywalking-apm-incubating/bin/collectorService.sh \
+    && echo "tail -f /dev/null" >> /apache-skywalking-apm-incubating/bin/collectorService.sh \
     && rm -rf /apache-skywalking-apm-incubating/agent
 
 EXPOSE 8080 10800 11800 12800
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-CMD ["/apache-skywalking-apm-incubating/bin/startup.sh"]
+CMD ["/apache-skywalking-apm-incubating/bin/collectorService.sh"]
