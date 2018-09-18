@@ -1,0 +1,87 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: skywalking-docker
+  labels:
+    app: skywalking-docker
+spec:
+  template:
+    metadata:
+      labels:
+        app: skywalking-docker
+    spec:
+      containers:
+      - image: wutang/skywalking-docker:5.x
+        name: skywalking-docker
+        volumeMounts:
+        - name: host-time
+          mountPath: /etc/localtime
+          readOnly: true
+        - name: skywalking-logs
+          mountPath: /apache-skywalking-apm-incubating/logs
+        ports:
+          - containerPort: 10800
+            name: skywalking-0
+          - containerPort: 11800
+            name: skywalking-1
+          - containerPort: 12800
+            name: skywalking-2
+          - containerPort: 8080
+            name: skywalking-3
+        resources:
+          limits:
+            cpu: "1000m"
+            memory: "2000Mi"
+          requests:
+            cpu: "1000m"
+            memory: "2000Mi"
+        env:
+          - name:  ES_CLUSTER_NAME
+            value: docker-cluster
+          - name:  ES_ADDRESSES
+            value: dmp-elasticsearch:9300
+          - name:  BIND_HOST
+            value: {{ HOST_IP }}
+          - name:  AGENT_JETTY_BIND_HOST
+            value: {{ HOST_IP }}
+          - name:  NAMING_BIND_HOST
+            value: {{ HOST_IP }}
+          - name:  UI_JETTY_BIND_HOST
+            value: 0.0.0.0
+          - name: JAVA_OPTS
+            value: -Xms1000m -Xmx1000m -XX:MaxRAM=2000m
+      volumes:
+      - name: host-time
+        hostPath:
+          path: /etc/localtime
+      - name: skywalking-logs
+        hostPath:
+          path: /root/skywalking-logs/skywalking
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - operator: In
+                    values:
+                      - {{ DCE_SKY_WALKING_HOST_NAME }}
+                    key: kubernetes.io/hostname
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: skywalking-docker
+  labels:
+    app: skywalking-docker
+spec:
+  type: NodePort
+  ports:
+  - port: 10800
+    name: skywalking-0
+  - port: 11800
+    name: skywalking-1
+  - port: 12800
+    name: skywalking-2
+  selector:
+    app: skywalking-docker
