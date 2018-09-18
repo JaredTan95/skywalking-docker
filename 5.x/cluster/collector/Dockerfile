@@ -31,7 +31,7 @@ COPY application.yml /apache-skywalking-apm-incubating/config/application.yml
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
-# logs locations in /sky/logs folder.
+# logs locations in /apache-skywalking-apm-incubating/logs folder.
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime \
     && echo 'Asia/Shanghai' >/etc/timezone \
