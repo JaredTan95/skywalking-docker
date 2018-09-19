@@ -12,6 +12,7 @@ FROM java:openjdk-8u111-jre
 LABEL maintainer="jian.tan@daocloud.io"
 
 ENV ES_CLUSTER_NAME=elasticsearch \
+    ES_CLUSTER_SNIFFER=true \
     ES_ADDRESSES=localhost:9300 \
     BIND_HOST=0.0.0.0  \
     NAMING_BIND_HOST=0.0.0.0 \

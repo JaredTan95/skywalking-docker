@@ -26,7 +26,7 @@ services:
       - BIND_HOST=skywalking
       - AGENT_JETTY_BIND_HOST=skywalking
       - NAMING_BIND_HOST=skywalking
-      - UI_JETTY_BIND_HOST=127.0.0.1
+      - UI_JETTY_BIND_HOST=0.0.0.0
     depends_on:
       - elasticsearch-service
     links:

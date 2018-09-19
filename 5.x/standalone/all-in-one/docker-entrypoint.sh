@@ -5,6 +5,9 @@ absolute_path="/apache-skywalking-apm-incubating/config/application.yml"
 echo "replace {ES_CLUSTER_NAME} to ${ES_CLUSTER_NAME}"
 eval sed -i -e 's/\{ES_CLUSTER_NAME\}/${ES_CLUSTER_NAME}/' ${absolute_path}
 
+echo "replace {ES_CLUSTER_SNIFFER} to ${ES_CLUSTER_SNIFFER}"
+eval sed -i -e 's/\{ES_CLUSTER_SNIFFER\}/${ES_CLUSTER_SNIFFER}/' ${absolute_path}
+
 echo "replace {ES_ADDRESSES} to ${ES_ADDRESSES}"
 eval sed -i -e 's/\{ES_ADDRESSES\}/${ES_ADDRESSES}/' ${absolute_path}
 

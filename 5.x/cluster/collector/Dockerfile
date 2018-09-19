@@ -15,6 +15,7 @@ FROM java:openjdk-8u111-jre
 LABEL maintainer="jian.tan@daocloud.io"
 
 ENV ZK_ADDRESSES=localhost:2181 \
+    ES_CLUSTER_SNIFFER=true \
     ES_CLUSTER_NAME=elasticsearch \
     ES_ADDRESSES=localhost:9300 \
     BIND_HOST=0.0.0.0  \
