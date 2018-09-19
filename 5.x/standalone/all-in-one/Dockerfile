@@ -1,15 +1,18 @@
 FROM alpine:3.8 AS sky-builder
 
-# after ADD unzip does not work?
-ADD http://mirrors.tuna.tsinghua.edu.cn/apache/incubator/skywalking/5.0.0-beta2/apache-skywalking-apm-incubating-5.0.0-beta2.tar.gz /
+ENV SKYWALKING_VERSION=5.0.0-RC2
 
-RUN tar -zxvf /apache-skywalking-apm-incubating-5.0.0-beta2.tar.gz
+# after ADD unzip does not work?
+ADD http://mirrors.tuna.tsinghua.edu.cn/apache/incubator/skywalking/${SKYWALKING_VERSION}/apache-skywalking-apm-incubating-${SKYWALKING_VERSION}.tar.gz  /
+
+RUN tar -zxvf /apache-skywalking-apm-incubating-${SKYWALKING_VERSION}.tar.gz
 
 FROM java:openjdk-8u111-jre
 
 LABEL maintainer="jian.tan@daocloud.io"
 
 ENV ES_CLUSTER_NAME=elasticsearch \
+    ES_CLUSTER_SNIFFER=true \
     ES_ADDRESSES=localhost:9300 \
     BIND_HOST=0.0.0.0  \
     NAMING_BIND_HOST=0.0.0.0 \
@@ -19,11 +22,16 @@ ENV ES_CLUSTER_NAME=elasticsearch \
     AGENT_JETTY_BIND_HOST=0.0.0.0 \
     AGENT_JETTY_BIND_PORT=12800 \
     UI_JETTY_BIND_PORT=12800 \
-    UI_JETTY_BIND_HOST=0.0.0.0
+    UI_JETTY_BIND_HOST=0.0.0.0 \
+    UI_SERVER_PORT=8080 \
+    UI_ADMIN_PASSWORD=admin \
+    UI_RIBBON_LIST_SERVERS=127.0.0.1:10800
 
 COPY --from=sky-builder /apache-skywalking-apm-incubating /apache-skywalking-apm-incubating
 
 COPY application.yml /apache-skywalking-apm-incubating/config/application.yml
+
+COPY webapp.yml /apache-skywalking-apm-incubating/webapp/webapp.yml
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
