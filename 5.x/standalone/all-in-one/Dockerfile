@@ -22,11 +22,16 @@ ENV ES_CLUSTER_NAME=elasticsearch \
     AGENT_JETTY_BIND_HOST=0.0.0.0 \
     AGENT_JETTY_BIND_PORT=12800 \
     UI_JETTY_BIND_PORT=12800 \
-    UI_JETTY_BIND_HOST=0.0.0.0
+    UI_JETTY_BIND_HOST=0.0.0.0 \
+    UI_SERVER_PORT=8080 \
+    UI_ADMIN_PASSWORD=admin \
+    UI_RIBBON_LIST_SERVERS=127.0.0.1:10800
 
 COPY --from=sky-builder /apache-skywalking-apm-incubating /apache-skywalking-apm-incubating
 
 COPY application.yml /apache-skywalking-apm-incubating/config/application.yml
+
+COPY webapp.yml /apache-skywalking-apm-incubating/webapp/webapp.yml
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
