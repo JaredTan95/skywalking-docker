@@ -1,14 +1,15 @@
 version: '2'
+networks:
+  skywalking-net:
+    driver: bridge
 services:
-  elasticsearch-service:
+  elasticsearch:
+    restart: always
     image: wutang/elasticsearch-shanghai-zone
     container_name: elasticsearch
     environment:
       - cluster.name=elasticsearch
-      - bootstrap.memory_lock=true
       - xpack.security.enabled=false
-      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
-      - node.name=elasticsearch_node_1
     ulimits:
       memlock:
         soft: -1
@@ -16,23 +17,24 @@ services:
     ports:
       - 9200:9200
       - 9300:9300
+    networks:
+      - skywalking-net
   
   skywalking:
-    image: wutang/skywalking-docker:5.x
+    restart: always
+    image: wutang/skywalking-docker:latest
     container_name: skywalking
     environment:
       - ES_CLUSTER_NAME=elasticsearch
-      - ES_ADDRESSES=elasticsearch-service:9300
-      - BIND_HOST=skywalking
-      - AGENT_JETTY_BIND_HOST=skywalking
-      - NAMING_BIND_HOST=skywalking
-      - UI_JETTY_BIND_HOST=0.0.0.0
+      - ES_ADDRESSES=elasticsearch:9300
     depends_on:
-      - elasticsearch-service
+      - elasticsearch
     links:
-      - elasticsearch-service
+      - elasticsearch
     ports:
       - 8080:8080
       - 10800:10800
       - 11800:11800
       - 12800:12800
+    networks:
+      - skywalking-net
