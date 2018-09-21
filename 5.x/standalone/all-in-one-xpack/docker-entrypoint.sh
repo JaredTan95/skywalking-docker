@@ -2,6 +2,8 @@
 
 absolute_path="/apache-skywalking-apm-incubating/config/application.yml"
 
+webapp_config_path="/apache-skywalking-apm-incubating/webapp/webapp.yml"
+
 echo "replace {ES_CLUSTER_NAME} to ${ES_CLUSTER_NAME}"
 eval sed -i -e 's/\{ES_CLUSTER_NAME\}/${ES_CLUSTER_NAME}/' ${absolute_path}
 
@@ -37,6 +39,15 @@ eval sed -i -e 's/\{UI_JETTY_BIND_HOST\}/${UI_JETTY_BIND_HOST}/' ${absolute_path
 
 echo "replace {SECURITY_USER} to ${SECURITY_USER}"
 eval sed -i -e 's/\{SECURITY_USER\}/${SECURITY_USER}/' ${absolute_path}
+
+echo "replace {UI_SERVER_PORT} to ${UI_SERVER_PORT}"
+eval sed -i -e 's/\{UI_SERVER_PORT\}/${UI_SERVER_PORT}/' ${webapp_config_path}
+
+echo "replace {UI_ADMIN_PASSWORD} to ${UI_ADMIN_PASSWORD}"
+eval sed -i -e 's/\{UI_ADMIN_PASSWORD\}/${UI_ADMIN_PASSWORD}/' ${webapp_config_path}
+
+echo "replace {UI_RIBBON_LIST_SERVERS} to ${UI_RIBBON_LIST_SERVERS}"
+eval sed -i -e 's/\{UI_RIBBON_LIST_SERVERS\}/${UI_RIBBON_LIST_SERVERS}/' ${webapp_config_path}
 
 
 exec "$@"
