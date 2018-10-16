@@ -35,9 +35,9 @@ services:
     environment:
       - ES_CLUSTER_NAME=elasticsearch
       - ES_ADDRESSES=elasticsearch-service:9300
-      - BIND_HOST=skywalking
-      - AGENT_JETTY_BIND_HOST=skywalking
-      - NAMING_BIND_HOST=skywalking
+      - BIND_HOST=0.0.0.0
+      - AGENT_JETTY_BIND_HOST=0.0.0.0
+      - NAMING_BIND_HOST=0.0.0.0
       - UI_JETTY_BIND_HOST=0.0.0.0
     depends_on:
       - elasticsearch-service
@@ -48,5 +48,5 @@ services:
       - 10800:10800
       - 11800:11800
       - 12800:12800
-
+      
 ```
