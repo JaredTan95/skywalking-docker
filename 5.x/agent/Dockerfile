@@ -1,6 +1,6 @@
 FROM alpine:3.8 AS sky-builder
 
-ENV SKYWALKING_VERSION=5.0.0-RC2
+ENV SKYWALKING_VERSION=5.0.0-GA
 
 # after ADD unzip does not work?
 ADD http://mirrors.tuna.tsinghua.edu.cn/apache/incubator/skywalking/${SKYWALKING_VERSION}/apache-skywalking-apm-incubating-${SKYWALKING_VERSION}.tar.gz  /
