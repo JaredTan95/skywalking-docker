@@ -35,6 +35,8 @@ COPY webapp.yml /apache-skywalking-apm-incubating/webapp/webapp.yml
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
+COPY wait-for-it.sh /wait-for-it.sh
+
 # logs locations in /sky/logs folder.
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime \
