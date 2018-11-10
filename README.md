@@ -11,13 +11,13 @@
  了解Docker或者使用过Docker相关命令。
 
 ## 目录结构（Structure）
-- Skywalking:5.x分支单机快速部署镜像源文件：
-	- standalone/all-in-one:用于自动构建[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/) Docker镜像。
-	- standalone/all-in-one-xpack:用于构建支持Elastic xpack账号密码登录的skywalking,常见阿里云ES,代码源由[liguobao/incubator-skywalking](https://github.com/liguobao/incubator-skywalking)基于incubator-skywalking 官方源码修改而来。
-	- standalone/collector:用于自动构建[wutang/skywalking-collector](https://hub.docker.com/r/wutang/skywalking-collector/) Docker镜像，该镜像用于部署单机Skywalking Collector。
-	- cluster/collector:用于自动构建[wutang/skywalking-collector](https://hub.docker.com/r/wutang/skywalking-collector/):5.x-zk 镜像，该镜像用于通过Zookeeper实现集群部署Skywalking Collector。
-	- quick-start:通过Docker stack或者Docker Compose快速启动Skywalking，其中包含启动[wutang/elasticsearch-shanghai-zone](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/) 和[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/)两个容器。
-- elasticsearch-5.6.10-Zone-Asia-SH 同步上海时区的Elasticsearch镜像源文件：
+- `Skywalking`:`5.x`分支容器部署镜像源文件：
+	- `standalone/all-in-one`:用于自动构建[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/) Docker镜像。
+	- `standalone/all-in-one-xpack`:用于构建支持Elastic xpack账号密码登录的skywalking,常见阿里云ES,代码源由[liguobao/incubator-skywalking](https://github.com/liguobao/incubator-skywalking)基于incubator-skywalking 官方源码修改而来。
+	- `standalone/collector`:用于自动构建[wutang/skywalking-collector](https://hub.docker.com/r/wutang/skywalking-collector/) Docker镜像，该镜像用于部署单机Skywalking Collector。
+	- `cluster/collector`:用于自动构建[wutang/skywalking-collector](https://hub.docker.com/r/wutang/skywalking-collector/):5.x-zk 镜像，该镜像用于通过Zookeeper实现集群部署Skywalking Collector。
+	- `quick-start`:通过Docker stack或者Docker Compose快速启动Skywalking，其中包含启动[wutang/elasticsearch-shanghai-zone](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/) 和[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/)两个容器。
+- `elasticsearch-5.6.10-Zone-Asia-SH`:同步上海时区的Elasticsearch镜像源文件：
 	- 用于自动构建[wutang/elasticsearch-shanghai-zone](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/) Docker镜像。
 
 ## 如何使用（Usage）
@@ -26,6 +26,7 @@
 ### 方式一、直接拉取镜像运行(Pull Image)
 #### 启动ElasticSearch容器
 - [wutang/elasticsearch-shanghai-zone](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/)镜像[使用说明](elasticsearch-5.6.10-Zone-Asia-SH/README.md)
+
 #### 启动Skywalking容器
 - [wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/)镜像[使用说明](5.x/standalone/all-in-one/README.md)
 - Docker Compose[使用说明](../5.x/quick-start/README.md)
@@ -38,7 +39,17 @@
 - ```Elasticsearch安装(如果已安装可跳过此步骤)，版本要求5.x：docker run -p 9200:9200 -p 9300:9300 -e cluster.name=elasticsearch -e xpack.security.enabled=false -d wutang/elasticsearch-shanghai-zone```
 - ```cd /skywalking-docker/5.x/standalone/all-in-one/```
 - ```docker build -t skywalking:5.0.0 .```
-- ```docker run -p 8080:8080 -p 10800:10800 -p 11800:11800 -p 12800:12800 -e ES_CLUSTER_NAME=elasticsearch -e ES_ADDRESSES=192.168.2.96:9300 -d skywalking:5.0.0```
+- 运行容器
+
+```
+docker run -d  --net=host \
+-m 2048m --memory-swap 2400m \
+-e DAE_SEGMENT="^127\.0\.\d{1,3}.\d{1,3}$" \
+-e JAVA_OPTS="-Xms1024m -Xmx2048m" \
+-e ES_CLUSTER_NAME=elasticsearch \
+-e ES_ADDRESSES=127.17.0.3:9300 \
+skywalking:5.0.0
+```
 - 使用浏览器访问```http://localhost:8080```即可.
 - 日志挂载 ```-v /your/log/path:/apache-skywalking-apm-incubating/logs```
 
@@ -49,5 +60,5 @@
 - ```docker build -t es-sh:5.6.10 .```
 
 ### 通过Docker Compose 一键启动(Start With Docker Compose)
-参考：[Skywalking-Dcoker Quick Start](https://github.com/JaredTan95/skywalking-docker/blob/master/5.x/quick-start/README.md)
+参考：[Skywalking-Docker Quick Start](https://github.com/JaredTan95/skywalking-docker/blob/master/5.x/quick-start/README.md)
 
