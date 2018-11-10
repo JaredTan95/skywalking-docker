@@ -23,10 +23,7 @@ services:
     environment:
       - ES_CLUSTER_NAME=elasticsearch
       - ES_ADDRESSES=elasticsearch-service:9300
-      - BIND_HOST=127.0.0.1
-      - AGENT_JETTY_BIND_HOST=127.0.0.1
-      - NAMING_BIND_HOST=127.0.0.1
-      - UI_JETTY_BIND_HOST=0.0.0.0
+      - DAE_SEGMENT="^172\.17\.\d{1,3}.\d{1,3}$"
     depends_on:
       - elasticsearch-service
     command: ["/wait-for-it.sh", "elasticsearch-service:9300", "-t", "20"]

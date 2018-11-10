@@ -13,8 +13,8 @@ eval sed -i -e 's/\{ES_CLUSTER_SNIFFER\}/${ES_CLUSTER_SNIFFER}/' ${application_c
 echo "replace {ES_ADDRESSES} to ${ES_ADDRESSES}"
 eval sed -i -e 's/\{ES_ADDRESSES\}/${ES_ADDRESSES}/' ${application_config_path}
 
-echo "replace {BIND_HOST} to ${BIND_HOST}"
-eval sed -i -e 's/\{BIND_HOST\}/${BIND_HOST}/' ${application_config_path}
+echo "replace {BIND_HOST} to ${DCE_ADVERTISE_IP}"
+eval sed -i -e 's/\{BIND_HOST\}/${DCE_ADVERTISE_IP}/' ${absolute_path}
 
 echo "replace {NAMING_BIND_HOST} to ${NAMING_BIND_HOST}"
 eval sed -i -e 's/\{NAMING_BIND_HOST\}/${NAMING_BIND_HOST}/' ${application_config_path}

@@ -11,7 +11,9 @@ FROM java:openjdk-8u111-jre
 
 LABEL maintainer="jian.tan@daocloud.io"
 
-ENV ES_CLUSTER_NAME=elasticsearch \
+ENV DAE_NETWORK='mac' \
+    DAE_SEGMENT='^172\.17\.\d{1,3}.\d{1,3}$' \
+    ES_CLUSTER_NAME=elasticsearch \
     ES_CLUSTER_SNIFFER=true \
     ES_ADDRESSES=localhost:9300 \
     BIND_HOST=0.0.0.0  \
@@ -37,6 +39,8 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 COPY wait-for-it.sh /wait-for-it.sh
 
+ADD https://github.com/JaredTan95/docker-app-ip-entrypoint/releases/download/v1.0/dce-app-entrypoint /
+
 # logs locations in /sky/logs folder.
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime \
@@ -48,6 +52,6 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime \
 
 EXPOSE 8080 10800 11800 12800
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/dce-app-entrypoint"]
 
-CMD ["/apache-skywalking-apm-incubating/bin/startup.sh"]
+CMD /docker-entrypoint.sh && /apache-skywalking-apm-incubating/bin/startupCollector.sh
