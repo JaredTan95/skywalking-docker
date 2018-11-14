@@ -25,7 +25,7 @@
 
 ### 方式一、直接拉取镜像运行(Pull Image)
 #### 启动ElasticSearch容器
-- [wutang/elasticsearch-shanghai-zone](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/)镜像[使用说明](elasticsearch-5.6.10-Zone-Asia-SH/README.md)
+- [wutang/elasticsearch-shanghai-zone](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/)镜像[使用说明](elasticsearch-Zone-Asia-SH/README.md)
 
 #### 启动Skywalking容器
 - [wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/)镜像[使用说明](5.x/standalone/all-in-one/README.md)
@@ -36,7 +36,7 @@
 #### 构建Skywalking镜像(Build Skywalking Image)
 - [安装Docker环境](https://www.docker.com/community-edition#/overview)
 - ```git clone https://github.com/JaredTan95/skywalking-docker.git```
-- ```Elasticsearch安装(如果已安装可跳过此步骤)，版本要求5.x：docker run -p 9200:9200 -p 9300:9300 -e cluster.name=elasticsearch -e xpack.security.enabled=false -d wutang/elasticsearch-shanghai-zone```
+- ```Elasticsearch安装(如果已安装可跳过此步骤)，版本要求5.x：docker run -p 9200:9200 -p 9300:9300 -e cluster.name=elasticsearch -e xpack.security.enabled=false -d wutang/elasticsearch-shanghai-zone:5.6.10```
 - ```cd /skywalking-docker/5.x/standalone/all-in-one/```
 - ```docker build -t skywalking:5.0.0 .```
 - 运行容器
@@ -56,8 +56,9 @@ skywalking:5.0.0
 #### 构建ElasticSearch镜像(Build ElasticSearch Image)
 - [安装Docker环境](https://www.docker.com/community-edition#/overview)
 - ```git clone https://github.com/JaredTan95/skywalking-docker.git```
-- ```cd /skywalking-docker/5.x/standalone/elasticsearch-5.6.10-Zone-Asia-SH```
-- ```docker build -t es-sh:5.6.10 .```
+- ```cd /skywalking-docker/5.x/standalone/elasticsearch-Zone-Asia-SH```
+- ```cd 5.6.10/```或者```cd 6.3.2/```
+- ```docker build -t es-sh .```
 
 ### 通过Docker Compose 一键启动(Start With Docker Compose)
 参考：[Skywalking-Docker Quick Start](https://github.com/JaredTan95/skywalking-docker/blob/master/5.x/quick-start/README.md)
