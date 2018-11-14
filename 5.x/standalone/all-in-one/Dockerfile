@@ -11,23 +11,45 @@ FROM java:openjdk-8u111-jre
 
 LABEL maintainer="jian.tan@daocloud.io"
 
-ENV DAE_NETWORK='mac' \
+ENV ENV DAE_NETWORK='mac' \
     DAE_SEGMENT='^172\.17\.\d{1,3}.\d{1,3}$' \
     ES_CLUSTER_NAME=elasticsearch \
-    ES_CLUSTER_SNIFFER=true \
-    ES_ADDRESSES=localhost:9300 \
-    BIND_HOST=0.0.0.0  \
-    NAMING_BIND_HOST=0.0.0.0 \
+    ES_ADDRESSES=127.0.0.1:9300 \
+    BIND_HOST=localhost  \
+    NAMING_BIND_HOST=localhost \
     NAMING_BIND_PORT=10800 \
     REMOTE_BIND_PORT=11800 \
     AGENT_GRPC_BIND_PORT=11800 \
-    AGENT_JETTY_BIND_HOST=0.0.0.0 \
+    AGENT_JETTY_BIND_HOST=localhost \
     AGENT_JETTY_BIND_PORT=12800 \
     UI_JETTY_BIND_PORT=12800 \
     UI_JETTY_BIND_HOST=0.0.0.0 \
-    UI_SERVER_PORT=8080 \
-    UI_ADMIN_PASSWORD=admin \
-    UI_RIBBON_LIST_SERVERS=127.0.0.1:10800
+    BUFFER_FILE_PATH=../buffer/ \
+    BUFFER_OFFSET_MAX_FILE_SIZE=10M \
+    BUFFER_SEGMENT_MAX_FILE_SIZE=50M \
+    BUFFER_FILE_CLEAN_WHEN_RESTART=true \
+    ES_SHARDS_NUMBER=2 \
+    ES_REPLICAS_NUMBER=0 \
+    ES_BULK_ACTIONS=2000 \
+    ES_FLUSH_INTERVAL=10 \
+    ES_CONCURRENT_REQUESTS=2 \
+    ES_HIGH_PERFORMANCE_MODE=true \
+    ES_BULK_SIZE=20 \
+    TRACE_DATA_TTL=90 \
+    MINUTE_METRIC_DATA_TTL=90 \
+    HOUR_METRIC_DATA_TTL=36 \
+    DAY_METRIC_DATA_TTL=45 \
+    MONTH_METRIC_DATA_TTL=18 \
+    THRESHOLD_APPLICATION_APDEX=2000 \
+    THRESHOLD_SERVICE_ERROR_RATE=10.00 \
+    THRESHOLD_SERVICE_AVG_RESPONSE_TIME=2000 \
+    THRESHOLD_INSTANCE_ERROR_RATE=10.00 \
+    THRESHOLD_INSTANCE_AVG_RESPONSE_TIME=2000 \
+    THRESHOLD_APPLICATION_ERROR_RATE=10.00 \
+    THRESHOLD_APPLICATION_AVG_RESPONSE_TIME=2000 \
+    THERMODYNAMIC_RESPONSE_TIME=50 \
+    THERMODYNAMIC_COUNT_OF_RESPONSE_TIME=40 \
+    WORKER_CACHE_MAX_SIZE=10000
 
 COPY --from=sky-builder /apache-skywalking-apm-incubating /apache-skywalking-apm-incubating
 
@@ -46,6 +68,7 @@ ADD https://github.com/JaredTan95/docker-app-ip-entrypoint/releases/download/v1.
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime \
     && echo 'Asia/Shanghai' >/etc/timezone \
     && chmod +x /docker-entrypoint.sh \
+    && chmod +x /dce-app-entrypoint \
     && chmod +x /apache-skywalking-apm-incubating/bin/startup.sh \
     && echo "tail -f /dev/null" >> /apache-skywalking-apm-incubating/bin/startup.sh \
     && rm -rf /apache-skywalking-apm-incubating/agent

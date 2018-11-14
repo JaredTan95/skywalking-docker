@@ -58,10 +58,10 @@ analysis_jvm:
   default:
 analysis_segment_parser:
   default:
-    bufferFilePath: ../buffer/
-    bufferOffsetMaxFileSize: 10M
-    bufferSegmentMaxFileSize: 500M
-    bufferFileCleanWhenRestart: false
+    bufferFilePath: {BUFFER_FILE_PATH}../buffer/
+    bufferOffsetMaxFileSize: {BUFFER_OFFSET_MAX_FILE_SIZE}
+    bufferSegmentMaxFileSize: {BUFFER_SEGMENT_MAX_FILE_SIZE}
+    bufferFileCleanWhenRestart: {BUFFER_FILE_CLEAN_WHEN_RESTART}
 ui:
   jetty:
     # Stay in `0.0.0.0` if UI starts up in default mode.
@@ -72,22 +72,22 @@ ui:
 storage:
   elasticsearch:
     clusterName: {ES_CLUSTER_NAME}
-    clusterTransportSniffer: {ES_CLUSTER_SNIFFER}
+    clusterTransportSniffer: false
     clusterNodes: {ES_ADDRESSES}
-    indexShardsNumber: 2
-    indexReplicasNumber: 0
-    highPerformanceMode: true
+    indexShardsNumber: {ES_SHARDS_NUMBER}
+    indexReplicasNumber: {ES_REPLICAS_NUMBER}
+    highPerformanceMode: {ES_HIGH_PERFORMANCE_MODE}true
     # Batch process setting, refer to https://www.elastic.co/guide/en/elasticsearch/client/java-api/5.5/java-docs-bulk-processor.html
-    bulkActions: 2000 # Execute the bulk every 2000 requests
-    bulkSize: 20 # flush the bulk every 20mb
-    flushInterval: 10 # flush the bulk every 10 seconds whatever the number of requests
-    concurrentRequests: 2 # the number of concurrent requests
+    bulkActions: {ES_BULK_ACTIONS} # Execute the bulk every 2000 requests
+    bulkSize: {ES_BULK_SIZE} # flush the bulk every 20mb
+    flushInterval: {ES_FLUSH_INTERVAL} # flush the bulk every 10 seconds whatever the number of requests
+    concurrentRequests: {ES_CONCURRENT_REQUESTS} # the number of concurrent requests
     # Set a timeout on metric data. After the timeout has expired, the metric data will automatically be deleted.
-    traceDataTTL: 90 # Unit is minute
-    minuteMetricDataTTL: 90 # Unit is minute
-    hourMetricDataTTL: 36 # Unit is hour
-    dayMetricDataTTL: 45 # Unit is day
-    monthMetricDataTTL: 18 # Unit is month
+    traceDataTTL: {TRACE_DATA_TTL} # Unit is minute
+    minuteMetricDataTTL: {MINUTE_METRIC_DATA_TTL} # Unit is minute
+    hourMetricDataTTL: {HOUR_METRIC_DATA_TTL} # Unit is hour
+    dayMetricDataTTL: {DAY_METRIC_DATA_TTL} # Unit is day
+    monthMetricDataTTL: {MONTH_METRIC_DATA_TTL} # Unit is month
 #storage:
 #  h2:
 #    url: jdbc:h2:~/memorydb
@@ -96,18 +96,18 @@ configuration:
   default:
     #namespace: xxxxx
     # alarm threshold
-    applicationApdexThreshold: 2000
-    serviceErrorRateThreshold: 10.00
-    serviceAverageResponseTimeThreshold: 2000
-    instanceErrorRateThreshold: 10.00
-    instanceAverageResponseTimeThreshold: 2000
-    applicationErrorRateThreshold: 10.00
-    applicationAverageResponseTimeThreshold: 2000
+    applicationApdexThreshold: {THRESHOLD_APPLICATION_APDEX}
+    serviceErrorRateThreshold: {THRESHOLD_SERVICE_ERROR_RATE}
+    serviceAverageResponseTimeThreshold: {THRESHOLD_SERVICE_AVG_RESPONSE_TIME}
+    instanceErrorRateThreshold: {THRESHOLD_INSTANCE_ERROR_RATE}
+    instanceAverageResponseTimeThreshold: {THRESHOLD_INSTANCE_AVG_RESPONSE_TIME}
+    applicationErrorRateThreshold: {THRESHOLD_APPLICATION_ERROR_RATE}
+    applicationAverageResponseTimeThreshold: {THRESHOLD_APPLICATION_AVG_RESPONSE_TIME}
     # thermodynamic
-    thermodynamicResponseTimeStep: 50
-    thermodynamicCountOfResponseTimeSteps: 40
+    thermodynamicResponseTimeStep: {THERMODYNAMIC_RESPONSE_TIME}
+    thermodynamicCountOfResponseTimeSteps: {THERMODYNAMIC_COUNT_OF_RESPONSE_TIME}
     # max collection's size of worker cache collection, setting it smaller when collector OutOfMemory crashed.
-    workerCacheMaxSize: 10000
+    workerCacheMaxSize: {WORKER_CACHE_MAX_SIZE}
 #receiver_zipkin:
 #  default:
 #    host: 0.0.0.0
