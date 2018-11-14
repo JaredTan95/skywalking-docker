@@ -1,4 +1,4 @@
-# Skywalking-Dcoker 镜像
+# Skywalking-Docker 镜像
 
 [![Docker Build Status](https://img.shields.io/docker/build/wutang/skywalking-docker.svg)](https://hub.docker.com/r/wutang/skywalking-docker/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wutang/skywalking-docker.svg)](https://hub.docker.com/r/wutang/skywalking-docker/)
