@@ -71,11 +71,11 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime \
     && chmod +x /docker-entrypoint.sh \
     && chmod +x /dce-app-entrypoint \
     && chmod +x /apache-skywalking-apm-incubating/bin/collectorService.sh \
-    && echo "tail -f /dev/null" >> /apache-skywalking-apm-incubating/bin/collectorService.sh \
+    && echo "tail -f -n 300  /apache-skywalking-apm-incubating/logs/collector.log" >> /apache-skywalking-apm-incubating/bin/collectorService.sh \
     && rm -rf /apache-skywalking-apm-incubating/agent
 
 EXPOSE 8080 10800 11800 12800
 
 ENTRYPOINT ["/dce-app-entrypoint"]
 
-CMD /docker-entrypoint.sh && /apache-skywalking-apm-incubating/bin/startupCollector.sh
+CMD /docker-entrypoint.sh && /apache-skywalking-apm-incubating/bin/collectorService.sh
