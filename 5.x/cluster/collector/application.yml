@@ -57,7 +57,7 @@ analysis_jvm:
   default:
 analysis_segment_parser:
   default:
-    bufferFilePath: {BUFFER_FILE_PATH}../buffer/
+    bufferFilePath: {BUFFER_FILE_PATH}
     bufferOffsetMaxFileSize: {BUFFER_OFFSET_MAX_FILE_SIZE}
     bufferSegmentMaxFileSize: {BUFFER_SEGMENT_MAX_FILE_SIZE}
     bufferFileCleanWhenRestart: {BUFFER_FILE_CLEAN_WHEN_RESTART}
@@ -75,7 +75,7 @@ storage:
     clusterNodes: {ES_ADDRESSES}
     indexShardsNumber: {ES_SHARDS_NUMBER}
     indexReplicasNumber: {ES_REPLICAS_NUMBER}
-    highPerformanceMode: {ES_HIGH_PERFORMANCE_MODE}true
+    highPerformanceMode: {ES_HIGH_PERFORMANCE_MODE}
     # Batch process setting, refer to https://www.elastic.co/guide/en/elasticsearch/client/java-api/5.5/java-docs-bulk-processor.html
     bulkActions: {ES_BULK_ACTIONS} # Execute the bulk every 2000 requests
     bulkSize: {ES_BULK_SIZE} # flush the bulk every 20mb
