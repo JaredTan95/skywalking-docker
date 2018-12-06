@@ -11,7 +11,7 @@ FROM java:openjdk-8u111-jre
 
 LABEL maintainer="jian.tan@daocloud.io"
 
-ENV ENV DAE_NETWORK='mac' \
+ENV DAE_NETWORK='mac' \
     DAE_SEGMENT='^172\.17\.\d{1,3}.\d{1,3}$' \
     ES_CLUSTER_NAME=elasticsearch \
     ES_ADDRESSES=127.0.0.1:9300 \
