@@ -56,8 +56,6 @@ COPY application.yml /apache-skywalking-apm-incubating/config/application.yml
 
 COPY webapp.yml /apache-skywalking-apm-incubating/webapp/webapp.yml
 
-COPY skywalking-collector-server.log /apache-skywalking-apm-incubating/logs/skywalking-collector-server.log
-
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 COPY wait-for-it.sh /wait-for-it.sh
@@ -70,6 +68,7 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime \
     && echo 'Asia/Shanghai' >/etc/timezone \
     && chmod +x /docker-entrypoint.sh \
     && chmod +x /dce-app-entrypoint \
+    && chmod +x /apache-skywalking-apm-incubating/bin/startup.sh \
     && chmod +x /apache-skywalking-apm-incubating/bin/startup.sh \
     && echo "tail -f -n 300  /apache-skywalking-apm-incubating/logs/skywalking-collector-server.log" >> /apache-skywalking-apm-incubating/bin/startup.sh \
     && rm -rf /apache-skywalking-apm-incubating/agent

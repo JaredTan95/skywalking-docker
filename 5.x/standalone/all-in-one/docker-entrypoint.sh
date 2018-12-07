@@ -37,9 +37,6 @@ eval sed -i -e 's/\{UI_JETTY_BIND_PORT\}/${UI_JETTY_BIND_PORT}/' ${application_c
 echo "replace {UI_JETTY_BIND_HOST} to ${UI_JETTY_BIND_HOST}"
 eval sed -i -e 's/\{UI_JETTY_BIND_HOST\}/${UI_JETTY_BIND_HOST}/' ${application_config_path}
 
-echo "replace {BUFFER_FILE_PATH} to ${BUFFER_FILE_PATH}"
-eval sed -i -e 's/\{BUFFER_FILE_PATH\}/${BUFFER_FILE_PATH}/' ${application_config_path}
-
 echo "replace {BUFFER_OFFSET_MAX_FILE_SIZE} to ${BUFFER_OFFSET_MAX_FILE_SIZE}"
 eval sed -i -e 's/\{BUFFER_OFFSET_MAX_FILE_SIZE\}/${BUFFER_OFFSET_MAX_FILE_SIZE}/' ${application_config_path}
 
