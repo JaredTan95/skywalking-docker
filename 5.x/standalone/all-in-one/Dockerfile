@@ -24,7 +24,6 @@ ENV DAE_NETWORK='mac' \
     AGENT_JETTY_BIND_PORT=12800 \
     UI_JETTY_BIND_PORT=12800 \
     UI_JETTY_BIND_HOST=0.0.0.0 \
-    BUFFER_FILE_PATH=../buffer/ \
     BUFFER_OFFSET_MAX_FILE_SIZE=10M \
     BUFFER_SEGMENT_MAX_FILE_SIZE=50M \
     BUFFER_FILE_CLEAN_WHEN_RESTART=true \
@@ -56,6 +55,8 @@ COPY --from=sky-builder /apache-skywalking-apm-incubating /apache-skywalking-apm
 COPY application.yml /apache-skywalking-apm-incubating/config/application.yml
 
 COPY webapp.yml /apache-skywalking-apm-incubating/webapp/webapp.yml
+
+COPY skywalking-collector-server.log /apache-skywalking-apm-incubating/logs/skywalking-collector-server.log
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 

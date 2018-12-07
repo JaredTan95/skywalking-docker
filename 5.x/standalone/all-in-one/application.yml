@@ -58,7 +58,7 @@ analysis_jvm:
   default:
 analysis_segment_parser:
   default:
-    bufferFilePath: {BUFFER_FILE_PATH}
+    bufferFilePath: ../buffer/
     bufferOffsetMaxFileSize: {BUFFER_OFFSET_MAX_FILE_SIZE}
     bufferSegmentMaxFileSize: {BUFFER_SEGMENT_MAX_FILE_SIZE}
     bufferFileCleanWhenRestart: {BUFFER_FILE_CLEAN_WHEN_RESTART}
