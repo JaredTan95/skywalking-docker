@@ -80,7 +80,7 @@ echo "replace {DAY_METRIC_DATA_TTL} to ${DAY_METRIC_DATA_TTL}"
 eval sed -i -e 's/\{DAY_METRIC_DATA_TTL\}/${DAY_METRIC_DATA_TTL}/' ${application_config_path}
 
 echo "replace {MONTH_METRIC_DATA_TTL} to ${MONTH_METRIC_DATA_TTL}"
-eval sed -i -e 's/\{DAY_METRIC_DATA_TTL\}/${MONTH_METRIC_DATA_TTL}/' ${application_config_path}
+eval sed -i -e 's/\{MONTH_METRIC_DATA_TTL\}/${MONTH_METRIC_DATA_TTL}/' ${application_config_path}
 
 echo "replace {THRESHOLD_APPLICATION_APDEX} to ${THRESHOLD_APPLICATION_APDEX}"
 eval sed -i -e 's/\{THRESHOLD_APPLICATION_APDEX\}/${THRESHOLD_APPLICATION_APDEX}/' ${application_config_path}
