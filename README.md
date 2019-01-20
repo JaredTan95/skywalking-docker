@@ -11,14 +11,16 @@
  了解Docker或者使用过Docker相关命令。
 
 ## 目录结构（Structure）
-- `Skywalking`:`5.x`分支容器部署镜像源文件：
+- `5.x`目录:官方仓库`5.x`分支容器部署镜像源文件：
 	- `standalone/all-in-one`:用于自动构建[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/) Docker镜像。
 	- `standalone/all-in-one-xpack`:用于构建支持Elastic xpack账号密码登录的skywalking,常见阿里云ES,代码源由[liguobao/incubator-skywalking](https://github.com/liguobao/incubator-skywalking)基于incubator-skywalking 官方源码修改而来。
 	- `standalone/collector`:用于自动构建[wutang/skywalking-collector](https://hub.docker.com/r/wutang/skywalking-collector/) Docker镜像，该镜像用于部署单机Skywalking Collector。
 	- `cluster/collector`:用于自动构建[wutang/skywalking-collector](https://hub.docker.com/r/wutang/skywalking-collector/):5.x-zk 镜像，该镜像用于通过Zookeeper实现集群部署Skywalking Collector。
 	- `quick-start`:通过Docker stack或者Docker Compose快速启动Skywalking，其中包含启动[wutang/elasticsearch-shanghai-zone](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/) 和[wutang/skywalking-docker](https://hub.docker.com/r/wutang/skywalking-docker/)两个容器。
-- `elasticsearch-5.6.10-Zone-Asia-SH`:同步上海时区的Elasticsearch镜像源文件：
-	- 用于自动构建[wutang/elasticsearch-shanghai-zone](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/) Docker镜像。
+- `6.x`目录:官方仓库`6.x`分支容器部署镜像源文件：
+	
+- `elasticsearch-Zone-Asia-SH`目录:同步上海时区的Elasticsearch镜像源文件：
+	- 用于自动构建[wutang/elasticsearch-shanghai-zone](https://hub.docker.com/r/wutang/elasticsearch-shanghai-zone/) Docker镜像, 其中`5.6.10`对应ES-5.6.10版本`6.3.2`对应ES-6.3.2版本。
 
 ## 如何使用（Usage）
 
