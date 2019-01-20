@@ -27,7 +27,7 @@ FROM openjdk:8-jre-alpine
 
 LABEL maintainer="jian.tan@daocloud.io"
 
-COPY --from=sky-builder /apache-skywalking-apm-incubating /apache-skywalking-apm-incubating
+COPY --from=sky-builder /apache-skywalking-apm-incubating /
 
 FROM openjdk:8-jre-alpine
 
