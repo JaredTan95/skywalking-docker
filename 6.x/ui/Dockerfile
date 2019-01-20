@@ -29,8 +29,6 @@ LABEL maintainer="jian.tan@daocloud.io"
 
 COPY --from=sky-builder /apache-skywalking-apm-incubating /
 
-FROM openjdk:8-jre-alpine
-
 ENV DIST_NAME=apache-skywalking-apm-incubating \
     JAVA_OPTS=" -Xms512M -Xmx1024M"
 
