@@ -30,7 +30,7 @@ LABEL maintainer="jian.tan@daocloud.io"
 COPY --from=sky-builder /apache-skywalking-apm-incubating /
 
 ENV DIST_NAME=apache-skywalking-apm-incubating \
-    JAVA_OPTS=" -Xms512M -Xmx1024M"
+    JAVA_OPTS=" -Xms256M -Xmx512M"
 
 # Install required packages
 RUN apk add --no-cache \
