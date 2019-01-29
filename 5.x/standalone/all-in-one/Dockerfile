@@ -11,12 +11,10 @@ FROM java:openjdk-8u111-jre
 
 LABEL maintainer="jian.tan@daocloud.io"
 
-ENV DAE_NETWORK='mac' \
-    DAE_SEGMENT='^172\.17\.\d{1,3}.\d{1,3}$' \
-    ES_CLUSTER_NAME=elasticsearch \
+ENV ES_CLUSTER_NAME=elasticsearch \
     ES_ADDRESSES=127.0.0.1:9300 \
-    BIND_HOST=localhost  \
-    NAMING_BIND_HOST=localhost \
+    BIND_HOST=0.0.0.0  \
+    NAMING_BIND_HOST=0.0.0.0 \
     NAMING_BIND_PORT=10800 \
     REMOTE_BIND_PORT=11800 \
     AGENT_GRPC_BIND_PORT=11800 \
@@ -60,21 +58,14 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 COPY wait-for-it.sh /wait-for-it.sh
 
-ADD https://github.com/JaredTan95/docker-app-ip-entrypoint/releases/download/v1.0/dce-app-entrypoint /
-
 # logs locations in /sky/logs folder.
-
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime \
-    && echo 'Asia/Shanghai' >/etc/timezone \
+    && echo 'Asia/Shanghai' > /etc/timezone \
     && chmod +x /docker-entrypoint.sh \
-    && chmod +x /dce-app-entrypoint \
-    && chmod +x /apache-skywalking-apm-incubating/bin/startup.sh \
     && chmod +x /apache-skywalking-apm-incubating/bin/startup.sh \
     && echo "tail -f -n 300  /apache-skywalking-apm-incubating/logs/skywalking-collector-server.log" >> /apache-skywalking-apm-incubating/bin/startup.sh \
     && rm -rf /apache-skywalking-apm-incubating/agent
 
 EXPOSE 8080 10800 11800 12800
-
-ENTRYPOINT ["/dce-app-entrypoint"]
 
 CMD /docker-entrypoint.sh && /apache-skywalking-apm-incubating/bin/startup.sh

@@ -23,7 +23,6 @@ services:
     environment:
       - ES_CLUSTER_NAME=elasticsearch
       - ES_ADDRESSES=elasticsearch-service:9300
-      - DAE_SEGMENT="^172\.17\.\d{1,3}.\d{1,3}$"
     depends_on:
       - elasticsearch-service
     command: ["/wait-for-it.sh", "elasticsearch-service:9300", "-t", "20"]
