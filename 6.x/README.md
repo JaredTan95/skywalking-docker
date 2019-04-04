@@ -10,13 +10,15 @@ docker-compose up [-d]
 
 ## 目录结构(Structure)
 
-- **oap** : Skywalking-OAP-Server镜像。
+- **image-build/oap** : Skywalking-OAP-Server镜像构建。
 
-- **ui**:  Skywalking-UI 镜像
+- **image-buildui**:  Skywalking-UI 镜像构建
 
 - **config**: 关于*Skywalking-OAP-Server*的配置文件。
 
-- **docker-compose.yml**: 快速启动。
+- **docker-compose/docker-compose.yml**: 快速启动。
+
+- **TODO: kubernetes**: kubernetes快速启动。
 
 ## 与elasticsearch-shanghai-zone镜像配合使用请参考
 
