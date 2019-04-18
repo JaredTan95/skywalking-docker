@@ -1,6 +1,6 @@
 # Skywalking-Docker
 
-通过Apache-skywalking官方发布的[压缩包](https://skywalking.incubator.apache.org/)构建Docker镜像。提供一键启动单机演示版Skywalking的方式。
+通过Apache-skywalking官方发布的[压缩包](https://skywalking.incubator.apache.org/)构建Docker镜像。并提供容器部署Skywalking的方式。
 
 [![GitHub stars](https://img.shields.io/github/stars/JaredTan95/skywalking-docker.svg?style=for-the-badge&label=Stars&logo=github)](https://github.com/JaredTan95/skywalking-docker) [![Docker Build Status](https://img.shields.io/docker/build/wutang/skywalking-docker.svg)](https://hub.docker.com/r/wutang/skywalking-docker/) [![Docker Automated build](https://img.shields.io/docker/automated/wutang/skywalking-docker.svg)](https://hub.docker.com/r/wutang/skywalking-docker/builds/)
 
@@ -11,7 +11,7 @@
 
 ## 前置条件（Precondition）
 
- 了解Docker或者使用过Docker相关命令。
+ 了解Docker或者使用过Docker、kubernetes相关命令。
 
 ## 目录结构（Structure）
 
