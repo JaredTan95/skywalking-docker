@@ -12,7 +12,7 @@ docker-compose up [-d]
 
 - **image-build/oap** : Skywalking-OAP-Server镜像构建。
 
-- **image-buildui**:  Skywalking-UI 镜像构建
+- **image-build/ui**:  Skywalking-UI 镜像构建
 
 - **config**: 关于*Skywalking-OAP-Server*的配置文件。
 
@@ -20,7 +20,27 @@ docker-compose up [-d]
 
 - **TODO: kubernetes**: kubernetes快速启动。
 
+## 手动构建镜像
+
+- Skywalking-OAP镜像构建
+
+```bash
+cd image-build/oap
+
+docker build -t Skywalking-OAP .
+
+```
+
+- Skywalking-UI镜像构建
+
+```bash
+cd image-build/ui
+
+docker build -t Skywalking-UI .
+
+```
+
 ## 与elasticsearch-shanghai-zone镜像配合使用请参考
 
-- [wutang/elasticsearch-shanghai-zone](https://github.com/JaredTan95/skywalking-docker/blob/master/elasticsearch-6.3.2-Zone-Asia-SH/README.md)
+- [wutang/elasticsearch-shanghai-zone:6.3.2](https://github.com/JaredTan95/skywalking-docker/blob/master/elasticsearch-6.3.2-Zone-Asia-SH/README.md)
 - [quick start](https://github.com/JaredTan95/skywalking-docker/blob/master/6.x/quick-start/README.md)
