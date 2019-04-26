@@ -29,7 +29,8 @@ LABEL maintainer="jian.tan@daocloud.io"
 
 COPY --from=sky-builder /apache-skywalking-apm-incubating /
 
-ENV DIST_NAME=apache-skywalking-apm-incubating \
+ENV TZ=Asia/Shanghai \
+    DIST_NAME=apache-skywalking-apm-incubating \
     JAVA_OPTS=" -Xms256M -Xmx512M"
 
 # Install required packages
@@ -38,8 +39,8 @@ RUN apk add --no-cache \
 
 # logs locations in /sky/logs folder.
 RUN set -ex; \
-    ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime; \
-    echo 'Asia/Shanghai' > /etc/timezone; \
+    ln -sf /usr/share/zoneinfo/$TZ  /etc/localtime; \
+    echo $TZ > /etc/timezone; \
     rm -rf "$DIST_NAME.tar.gz"; rm -rf "$DIST_NAME/config"; \
     rm -rf "$DIST_NAME/bin"; rm -rf "$DIST_NAME/oap-libs"; rm -rf "$DIST_NAME/agent";
 
