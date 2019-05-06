@@ -14,34 +14,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM alpine:3.8 AS sky-builder
-
-ENV SKYWALKING_VERSION=6.0.0-GA
-
-# after ADD unzip does not work?
-ADD http://mirrors.tuna.tsinghua.edu.cn/apache/incubator/skywalking/${SKYWALKING_VERSION}/apache-skywalking-apm-incubating-${SKYWALKING_VERSION}.tar.gz  /
-
-RUN tar -zxvf /apache-skywalking-apm-incubating-${SKYWALKING_VERSION}.tar.gz
-
 FROM openjdk:8-jre-alpine
 
 LABEL maintainer="jian.tan@daocloud.io"
 
-COPY --from=sky-builder /apache-skywalking-apm-incubating /
+ENV SKYWALKING_VERSION=6.1.0 \
+    TZ=Asia/Shanghai \
+    PACKAGE_NAME=apache-skywalking-apm \
+    DIST_NAME=apache-skywalking-apm-bin \
+    JAVA_OPTS=" -Xms512M -Xmx1024M"
 
-ENV TZ=Asia/Shanghai \
-    DIST_NAME=apache-skywalking-apm-incubating \
-    JAVA_OPTS=" -Xms256M -Xmx512M"
+# after ADD unzip does not work?
+ADD http://mirrors.tuna.tsinghua.edu.cn/apache/skywalking/${SKYWALKING_VERSION}/${PACKAGE_NAME}-${SKYWALKING_VERSION}.tar.gz  /
 
 # Install required packages
 RUN apk add --no-cache \
     bash
 
-# logs locations in /sky/logs folder.
+# logs locations in /$DIST_NAME/logs folder.
 RUN set -ex; \
     ln -sf /usr/share/zoneinfo/$TZ  /etc/localtime; \
     echo $TZ > /etc/timezone; \
-    rm -rf "$DIST_NAME.tar.gz"; rm -rf "$DIST_NAME/config"; \
+    tar -zxvf /${PACKAGE_NAME}-${SKYWALKING_VERSION}.tar.gz; \ 
+    rm -rf "${PACKAGE_NAME}-${SKYWALKING_VERSION}.tar.gz"; rm -rf "$DIST_NAME/config"; \
     rm -rf "$DIST_NAME/bin"; rm -rf "$DIST_NAME/oap-libs"; rm -rf "$DIST_NAME/agent";
 
 WORKDIR $DIST_NAME
