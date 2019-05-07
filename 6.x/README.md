@@ -27,7 +27,7 @@ docker-compose up [-d]
 ```bash
 cd image-build/oap
 
-docker build -t Skywalking-OAP .
+docker build -t skywalking-oap .
 
 ```
 
@@ -36,7 +36,7 @@ docker build -t Skywalking-OAP .
 ```bash
 cd image-build/ui
 
-docker build -t Skywalking-UI .
+docker build -t skywalking-ui .
 
 ```
 
