@@ -1,4 +1,4 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:7.1.0
+FROM elasticsearch:7.0.1
 
 LABEL maintainer="jian.tan@daocloud.io"
 
