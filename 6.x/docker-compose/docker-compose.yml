@@ -36,8 +36,10 @@ services:
     ports:
       - 11800:11800
       - 12800:12800
+    environment:  
+      SW_STORAGE_ES_CLUSTER_NODES: elasticsearch:9200
     volumes:
-      - ./config:/apache-skywalking-apm-bin/config:ro
+      - ../config:/apache-skywalking-apm-bin/config:ro
   ui:
     image: wutang/skywalking-ui:6.1.0
     container_name: ui
@@ -49,4 +51,4 @@ services:
     ports:
       - 8080:8080
     environment:
-      collector.ribbon.listOfServers: oap:12800
+      JAVA_OPTS: "-Dcollector.ribbon.listOfServers: oap:12800"
