@@ -44,7 +44,3 @@
 ### 方式二、通过源码构建镜像(Build Image)
 
 参考[6.x/README.md](6.x/README.md)
-
-### 通过Docker Compose 一键启动(Start With Docker Compose)
-
-参考：[Skywalking-Docker Quick Start](https://github.com/JaredTan95/skywalking-docker/blob/master/5.x/quick-start/README.md)
