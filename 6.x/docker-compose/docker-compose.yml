@@ -51,4 +51,4 @@ services:
     ports:
       - 8080:8080
     environment:
-      JAVA_OPTS: "-Dcollector.ribbon.listOfServers: oap:12800"
+      collector.ribbon.listOfServers: oap:12800
