@@ -5,6 +5,18 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/JaredTan95/skywalking-docker.svg?style=for-the-badge&label=Stars&logo=github)](https://github.com/JaredTan95/skywalking-docker) [![Docker Build Status](https://img.shields.io/docker/build/wutang/skywalking-docker.svg)](https://hub.docker.com/r/wutang/skywalking-docker/) [![Docker Automated build](https://img.shields.io/docker/automated/wutang/skywalking-docker.svg)](https://hub.docker.com/r/wutang/skywalking-docker/builds/)
 
+## Quick Start(快速开始)
+
+```bash
+
+git clone https://github.com/JaredTan95/skywalking-docker.git
+cd skywalking-docker/6.x/docker-compose/
+docker-compose up
+
+```
+
+[![asciicast](https://asciinema.org/a/rwZPy0SROmI1we0Na5Q4W6dRG.svg)](https://asciinema.org/a/rwZPy0SROmI1we0Na5Q4W6dRG)
+
 ## Docker Hub
 
 | Skywalking 6.x（推荐） | Skywalking 5.x| 
