@@ -15,7 +15,7 @@ docker-compose up
 
 ```
 
-<script id="asciicast-rwZPy0SROmI1we0Na5Q4W6dRG" src="https://asciinema.org/a/rwZPy0SROmI1we0Na5Q4W6dRG.js" async></script>
+[![asciicast](https://asciinema.org/a/rwZPy0SROmI1we0Na5Q4W6dRG.svg)](https://asciinema.org/a/rwZPy0SROmI1we0Na5Q4W6dRG?t=0)
 
 ## Docker Hub
 
