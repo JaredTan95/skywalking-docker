@@ -1,6 +1,6 @@
 # Skywalking-Docker
 
-NOTE: Apache Skywalking开始提供Docker镜像，此仓库即将不再更新，更多请参考 [apache/skywalking-docker](https://github.com/apache/skywalking-docker)。
+**⚠️NOTE**: Apache Skywalking开始提供Docker镜像，此仓库即将不再更新，更多请参考 [apache/skywalking-docker](https://github.com/apache/skywalking-docker)。
 
 通过[Apache-skywalking](https://github.com/apache/incubator-skywalking/)
 官方发布的[压缩包](https://skywalking.incubator.apache.org/)构建Docker镜像。并提供容器部署Skywalking的方式。
